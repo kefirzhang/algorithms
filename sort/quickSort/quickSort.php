@@ -10,15 +10,15 @@ $unSortedData = range(1,10);
 shuffle($unSortedData);
 function quickSort($array)
 {
-    //»ùÏßÌõ¼ş Êı×éÉÙÓÚµÈÓÚ1
+    //åŸºçº¿æ¡ä»¶ æ•°ç»„å°‘äºç­‰äº1
     if (count($array) <= 1) {
         return $array;
     }
-    //µİ¹éÌõ¼ş ½øĞĞ·Ö¸î  Ğ¡ÓÚÊı×é + µ±Ç°ÔªËØ + ´óÓÚÊı×é
-    // Ëæ»ú»ñÈ¡Ò»¸öÔªËØ
+    //é€’å½’æ¡ä»¶ è¿›è¡Œåˆ†å‰²  å°äºæ•°ç»„ + å½“å‰å…ƒç´  + å¤§äºæ•°ç»„
+    // éšæœºè·å–ä¸€ä¸ªå…ƒç´ 
     $pickKey = array_rand($array);
     $pickValue = $array[$pickKey];
-    // »ñÈ¡±ÈÕâ¸öÔªËØĞ¡µÄÔªËØ
+    // è·å–æ¯”è¿™ä¸ªå…ƒç´ å°çš„å…ƒç´ 
     $smallerData = [];
     $biggerData = [];
     foreach ($array as $key => $value) {

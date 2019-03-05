@@ -10,17 +10,17 @@ shuffle($unSortedData);
 function mergeSort($array)
 {
 
-    //»ùÏßÌõ¼ş Êı×éÉÙÓÚµÈÓÚ1
+    //åŸºçº¿æ¡ä»¶ æ•°ç»„å°‘äºç­‰äº1
     if (count($array) <= 1) {
         return $array;
     }
-    //µİ¹éÌõ¼ş
-    // ²ğ·ÖÁ½²¿·Ö
+    //é€’å½’æ¡ä»¶
+    // æ‹†åˆ†ä¸¤éƒ¨åˆ†
     $num = ceil(count($array) / 2);
     $chunkData = array_chunk($array, $num);
     $left = mergeSort($chunkData[0]);
     $right = mergeSort($chunkData[1]);
-    // ²¢ ÖØĞÂ¶ÔÅÅºÃĞòµÄ×ó°ë²¿·ÖºÍÅÅºÃĞòµÄÓÒ°ë²¿·ÖÅÅĞò
+    // å¹¶ é‡æ–°å¯¹æ’å¥½åºçš„å·¦åŠéƒ¨åˆ†å’Œæ’å¥½åºçš„å³åŠéƒ¨åˆ†æ’åº
     $sortedData = [];
     while (count($left) > 0 && count($right) > 0) {
         if ($left[0] <= $right[0]) {
@@ -29,7 +29,7 @@ function mergeSort($array)
             $sortedData[] = array_shift($right);
         }
     }
-    //×·¼Ó Ê£ÏÂµÄ
+    //è¿½åŠ  å‰©ä¸‹çš„
     if (count($left) > 0) {
         $sortedData = array_merge($sortedData, $left);
     }
