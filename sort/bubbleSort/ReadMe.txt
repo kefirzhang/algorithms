@@ -40,6 +40,4 @@ for (i from 1 to length-1) {
 c/c++的伪代码 函数里面 会穿两个参数 待排数组 跟 数组长度，go php python 我没有加入第二个参数，而是自己获取 这个可能在语言层面有关
 还不是很明确
 
-php
-$arr = [10,1,9,2,8,3,7,4,6,5];
-print_r(xxxSort($arr));
+

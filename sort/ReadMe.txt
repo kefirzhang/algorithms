@@ -32,3 +32,15 @@ inc循环结束
 
 左箭头 ← >=
 右箭头 → 到 表示 <=
+
+php
+$arr = [10,1,9,2,8,3,7,4,6,5];
+print_r(xxxSort($arr));
+
+python
+arr = [10,1,9,2,8,3,7,4,6,5]
+print(bubbleSort(arr))
+
+go
+arr := []int{10,1,9,2,8,3,7,4,6,5}
+fmt.Println(bubbleSort(arr))
