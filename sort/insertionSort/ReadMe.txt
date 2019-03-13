@@ -12,7 +12,7 @@
 
 
 
-func insertSort(arr) {
+func insertionSort(arr) {
     len = len(arr)
     for i from 0 to len-1
         for j from i to 0
