@@ -1,33 +1,23 @@
-import math
 class Solution:
-    def isPrime(self, n):
-        if n <= 3:
-            return n > 1
-        if n % 2 == 0:
-            return False
-        i = 3
-        middle = int(math.sqrt(n))
-        while i <= middle:
-            if n % i == 0:
-                return False
-            i += 2
-        return True
-
     def countPrimes(self, n):
-        total = 0
-        pre = min(n, 5)
-        for i in range(1, pre):
-            if self.isPrime(i):
-                total += 1
-        i = 6
-        while i <= n:
-            if self.isPrime(i - 1):
-                total += 1
-            if i + 1 < n and self.isPrime(i + 1):
-                total += 1
-            i += 6
-        return total
+        helper = [1] * n
+        if n < 3:
+            return 0
+        helper[0] = 0
+        helper[1] = 0
+        idx = 2
+        while idx < n:
+            if helper[idx] == 0:
+                idx += 1
+                continue
+
+            i_idx = idx + idx
+            while i_idx < n:
+                helper[i_idx] = 0
+                i_idx += idx
+            idx += 1
+        return sum(helper)
 
 
 slu = Solution()
-print(slu.countPrimes(999983))
+print(slu.countPrimes(64))
