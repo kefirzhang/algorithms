@@ -1,0 +1,1 @@
+select if(id)id,student from seat order by id
