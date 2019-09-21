@@ -1,1 +1,1 @@
-select if(id)id,student from seat order by id
+select if(mod(id,2)=0,id-1,if(id=(select max(id) from seat),id,id+1)) as id,student from seat order by id
