@@ -1,34 +1,25 @@
 class Solution:
     def maxDistToClosest(self, seats) -> int:
-        max_length = 0
-        max_start = -1
-        max_end = -1
-        cur_length = 0
-        cur_start = -1
-        cur_end = -1
-
-        for i, n in enumerate(seats):
-
-            if n == 0:
-                if cur_start == -1:
-                    cur_start = i
-                cur_length += 1
+        i, j = 0, len(seats) - 1
+        left, right = 0, 0
+        while i < len(seats) and seats[i] == 0:
+            i += 1
+            left += 1
+        while j >= 0 and seats[j] == 0:
+            j -= 1
+            right += 1
+        middle = 0
+        cur_middle = 0
+        for i in seats:
+            if i == 0:
+                cur_middle += 1
             else:
-                if cur_end == -1:
-                    cur_end = i
+                middle = max(middle, cur_middle)
+                cur_middle = 0
+        middle = max(middle, cur_middle)
 
-                # 如果 是左边开头的
-
-
-
-                if cur_length > max_length:
-                    max_length = max(max_length, cur_length)
-                    max_index = i
-                cur_length = 0
-
-        print(max_index, max_length)
-        return max_length
+        return max(left, right, int((middle + 1) / 2))
 
 
 slu = Solution()
-print(slu.maxDistToClosest([0, 0, 0, 0, 0, 0, 1]))
+print(slu.maxDistToClosest([1, 0, 1, 1, 0,0,0,0, 0, 1]))
