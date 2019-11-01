@@ -1,3 +1,4 @@
+# 负数 未解决
 class Solution:
     def getSum(self, a: int, b: int) -> int:
         while b != 0:
