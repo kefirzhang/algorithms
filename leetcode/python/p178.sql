@@ -1,1 +1,0 @@
-select Score,@a:=@a+(@pre<>( @pre:= Score)) as Rank from Scores,(select @a:=0,@pre:=-1) as t order by Score desc
