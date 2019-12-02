@@ -1,4 +1,4 @@
-class Solution:
+class Solution: # 暂时放弃这道题
     def checkSubarraySum(self, nums, k: int) -> bool:
         hashMap = {0: -1}
         sum_num = 0
