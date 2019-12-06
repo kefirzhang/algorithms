@@ -1,23 +1,24 @@
 class Solution:
-    res = []
+    def __init__(self):
+        self.ret = []
 
     def solveNQueens(self, n: int):
-        board = [['.'] * n for i in range(n)]
+        board = [['.' for j in range(n)] for i in range(n)]
         self.backTrack(board, 0)
-
-        return self.res
+        return self.ret
 
     def backTrack(self, board, row):
         if row == len(board):
-            self.res.append(board)
+            tmp = ["".join(x) for x in board]
+            self.ret.append(tmp)
             return
         n = len(board[row])
-        for i in range(n):
-            if self.isVaild(board, row, i) is False:
+        for col in range(n):
+            if self.isVaild(board, row, col) is False:
                 continue
-            board[row][i] = 'Q'
+            board[row][col] = 'Q'
             self.backTrack(board, row + 1)
-            board[row][i] = '.'
+            board[row][col] = '.'
 
     def isVaild(self, board, row, col):
 
@@ -35,15 +36,16 @@ class Solution:
                 return False
             m -= 1
             # 右上方
-        m, n = row, len(board)
-        while m >= 0 and n >= col:
-            if board[m][col] == 'Q':
+        m, n = row, col
+        while m >= 0 and n < len(board[0]):
+            if board[m][n] == 'Q':
                 return False
             m -= 1
-            n -= 1
+            n += 1
 
         return True
 
 
 slu = Solution()
 print(slu.solveNQueens(4))
+# [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
