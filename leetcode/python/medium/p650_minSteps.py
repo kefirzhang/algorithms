@@ -12,3 +12,4 @@ class Solution:
 
 slu = Solution()
 print(slu.minSteps(3))
+
