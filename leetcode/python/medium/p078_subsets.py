@@ -1,5 +1,4 @@
 class Solution:
-
     def subsets(self, nums):
         res = [[]]
         for i in nums:
