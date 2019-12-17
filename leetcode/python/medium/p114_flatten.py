@@ -8,8 +8,18 @@ class TreeNode:
 
 class Solution:
     def flatten(self, root: TreeNode) -> None:
-        right = root.right
-        root.right = root.left
+        if not root:
+            return
+        self.flatten(root.left)
+        self.flatten(root.right)
+        if root.left:
+            pre = root.left
+            while pre.right:
+                pre = pre.right
+            pre.right = root.right
+            root.right = root.left
+            root.left = None
+
 
 
 
@@ -19,4 +29,4 @@ t1.left.left = TreeNode(3)
 t1.right = TreeNode(5)
 t1.left.right = TreeNode(4)
 slu = Solution()
-slu.flatten()
+slu.flatten(t1)
