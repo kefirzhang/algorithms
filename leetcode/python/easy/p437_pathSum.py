@@ -7,29 +7,19 @@ class TreeNode:
 
 
 class Solution:
-    def __init__(self):
-        self.ans = 0
-
     def pathSum(self, root: TreeNode, sum: int) -> int:
 
-        def dfs(node, target):
-
-            if node is None:
-                return
-            print(node.val, target)
-            if node.val == target:
-                self.ans += 1
-                dfs(node.left, sum)
-                dfs(node.right, sum)
-
-            else:
-                dfs(node.left, target - node.val)
-                dfs(node.right, target - node.val)
-                dfs(node.left, sum)
-                dfs(node.right, sum)
-
-        dfs(root, sum)
-        return self.ans
+        def helper(node, value):
+            if not node:
+                return 0
+            res = 0
+            if node.val == value:
+                res += 1
+            value -= node.val
+            return res + helper(node.left, value) + helper(node.right, value)
+        if not root:
+            return 0
+        return helper(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)
 
 
 tree = TreeNode(1)
