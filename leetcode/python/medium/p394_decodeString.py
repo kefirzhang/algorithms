@@ -1,9 +1,22 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        nlen = len(s)
-        left,right = 0,nlen-1
+        def helper(s, i):
+            res, multi = "", 0
+            while i < len(s):
+                if s[i] == "[":
+                    i, tmp = helper(s, i + 1)
+                    res = res + multi * tmp
+                    multi = 0
+                elif s[i] == "]":
+                    return i,res
+                elif "0" <= s[i] <= "9":
+                    multi = multi * 10 + int(s[i])
+                else:
+                    res += s[i]
+                i += 1
+            return res
 
-        return ""
+        return helper(s, 0)
 
 
 slu = Solution()
