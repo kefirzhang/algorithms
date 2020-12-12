@@ -6,7 +6,7 @@ import "fmt"
 // 需要逐步优化  go 还是不是很熟悉
 func quickSort(arr []int) []int {
 	//基准条件
-	if (len(arr) <= 1) {
+	if len(arr) <= 1 {
 		return arr
 	}
 	//递归条件 随机选择一个函数 然后 拆分数组
@@ -15,20 +15,39 @@ func quickSort(arr []int) []int {
 	var smallerData []int
 	var biggerData []int
 	var sortedData []int
-	for i, v:= range arr {
-		if(i != pickKey) {
-			if(v <= pickValue) {
-				smallerData = append(smallerData,v)
-			}else {
-				biggerData = append(biggerData,v)
+	for i, v := range arr {
+		if i != pickKey {
+			if v <= pickValue {
+				smallerData = append(smallerData, v)
+			} else {
+				biggerData = append(biggerData, v)
 			}
 		}
 	}
 	smallerData = quickSort(smallerData)
 	biggerData = quickSort(biggerData)
-	smallerData = append(smallerData,pickValue)
-	sortedData = append(smallerData,biggerData...)
+	smallerData = append(smallerData, pickValue)
+	sortedData = append(smallerData, biggerData...)
 	return sortedData
+}
+
+func quickSort2(nums []int) []int {
+	if len(nums) <= 1 {
+		return nums
+	}
+	base := 0
+	postion := base + 1
+
+	for i := base + 1; i < len(nums); i++ {
+		if nums[i] <= nums[base] {
+			nums[postion], nums[i] = nums[i], nums[postion]
+			postion++
+		}
+	}
+	nums[base], nums[postion-1] = nums[postion-1], nums[base]
+	quickSort(nums[:postion-1])
+	quickSort(nums[postion:])
+	return nums
 }
 
 func main() {
