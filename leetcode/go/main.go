@@ -1,17 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-func missingNumber(nums []int) int {
+func firstMissingPositive(nums []int) int {
 	n := len(nums)
-	total := ((n + 1) * n) / 2
-	for _, num := range nums {
-		total -= num
+	for i := 0; i < n; i++ {
+		for nums[i] > 0 && nums[i] <= n && nums[nums[i]-1] != nums[i] {
+			nums[nums[i]-1], nums[i] = nums[i], nums[nums[i]-1]
+		}
 	}
-	return total
+	for i := 0; i < n; i++ {
+		if nums[i] != i+1 {
+			return i + 1
+		}
+	}
+	return n + 1
 }
 
 func main() {
-	nums := []int{0, 1}
-	fmt.Println(missingNumber(nums))
+	//nums = [1,2,0] 3
+	//[3,4,-1,1] 2
+	// [7,8,9,11,12] 1
+	nums := []int{3, 4, -1, 1}
+	fmt.Println(firstMissingPositive(nums))
 }
