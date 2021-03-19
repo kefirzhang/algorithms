@@ -1,7 +1,6 @@
-package main
+package leetcode
 
 import (
-	"fmt"
 	"math"
 	"sort"
 )
@@ -31,9 +30,4 @@ func threeSumClosest(nums []int, target int) int {
 		}
 	}
 	return ret
-}
-
-func main() {
-	//[-1,2,1,-4] 1 2
-	fmt.Println(threeSumClosest([]int{1, 1, 1, 0}, -100))
 }
